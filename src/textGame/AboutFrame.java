@@ -43,8 +43,9 @@ public class AboutFrame extends JFrame {
 		setContentPane(contentPane);
 		
 		JTextArea txtrLolLikeId = new JTextArea();
+		txtrLolLikeId.setLineWrap(true);
 		txtrLolLikeId.setBackground(UIManager.getColor("Panel.background"));
-		txtrLolLikeId.setText("\n\n\n\n\n\tHelen's Quest is a Textbased adventure game");
+		txtrLolLikeId.setText("\n\nHelen's Quest is a chose your own adventure style game, about the \nTrojan war. You play as a soldier in the war, under a general of your \nchoice.");
 		contentPane.add(txtrLolLikeId, BorderLayout.CENTER);
 	}
 
