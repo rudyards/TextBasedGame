@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 public class InputPanel extends JPanel {
-	private JTextField InputField;
 	private String currentAction;
 	private JTextArea Reaction;
 
@@ -21,27 +20,27 @@ public class InputPanel extends JPanel {
 		
 		setLayout(null);
 		
-		InputField = new JTextField();
-		InputField.setBounds(16, 32, 354, 28);
-		add(InputField);
-		InputField.setColumns(10);
-		
 		Reaction = new JTextArea();
 		Reaction.setEditable(false);
 		Reaction.setLineWrap(true);
-		Reaction.setBounds(23, 82, 347, 155);
+		Reaction.setBounds(18, 26, 415, 155);
 		add(Reaction);
-
-		JButton ActButton = new JButton("Act!");
-		ActButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				currentAction = InputField.getText();
-				InputField.setText("");
-				Reaction.setText(currentAction);
-			}
-		});
-		ActButton.setBounds(376, 33, 68, 29);
-		add(ActButton);
+		
+		JButton choice1 = new JButton("Choice One");
+		choice1.setBounds(42, 212, 117, 29);
+		add(choice1);
+		
+		JButton choice2 = new JButton("Choice Two");
+		choice2.setBounds(42, 253, 117, 29);
+		add(choice2);
+		
+		JButton choice3 = new JButton("Choice Three");
+		choice3.setBounds(258, 212, 117, 29);
+		add(choice3);
+		
+		JButton choice4 = new JButton("Choice Four");
+		choice4.setBounds(258, 253, 117, 29);
+		add(choice4);
 		
 
 	}

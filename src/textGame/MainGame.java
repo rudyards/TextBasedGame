@@ -16,7 +16,7 @@ public class MainGame extends JFrame {
 	private JPanel contentPane;
 	private InputPanel inputPanel;
 	private MapPanel mapPanel;
-	private JournalPanel journalPanel;
+	// private JournalPanel journalPanel;
 	private HistoryPanel historyPanel;
 	private TitlePanel titlePanel;
 
@@ -50,12 +50,12 @@ public class MainGame extends JFrame {
 
 		inputPanel = new InputPanel();
 		getContentPane().add(inputPanel, BorderLayout.CENTER);
-		// Debug
-		journalPanel = new JournalPanel();
-		getContentPane().add(journalPanel, BorderLayout.EAST);
+		// Debug at a later date
+		// journalPanel = new JournalPanel();
+		// getContentPane().add(journalPanel, BorderLayout.WEST);
 
 		historyPanel = new HistoryPanel();
-		getContentPane().add(historyPanel, BorderLayout.WEST);
+		getContentPane().add(historyPanel, BorderLayout.EAST);
 
 		titlePanel = new TitlePanel();
 		getContentPane().add(titlePanel, BorderLayout.NORTH);
