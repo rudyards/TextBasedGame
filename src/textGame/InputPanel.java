@@ -34,6 +34,16 @@ public class InputPanel extends JPanel {
 		add(Reaction);
 
 		// Button text is instantiated for their initial choice
+
+		// Current Choice index:
+		/*
+		 * Choice 0 = name Choice 1 = general Choice 2 = Talent Choice 3 =
+		 * Reaction to Trojan Attack Choice 4 = Counter Attack
+		 * 
+		 * 
+		 * 
+		 * Other = Restart, there's a bug
+		 */
 		choice1 = new JButton("Choice One");
 		choice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -49,6 +59,16 @@ public class InputPanel extends JPanel {
 					talent = "Agility";
 					currentChoice++;
 					level1();
+				} else if (currentChoice == 3) {
+					// output result of choice, then give counterattack
+					// opportunity
+
+					counterAttack();
+
+				} else if (currentChoice == 4) {
+					// output result of choice, then return to camp (if survive)
+
+					exploreC();
 				} else {
 					start();
 				}
@@ -68,11 +88,20 @@ public class InputPanel extends JPanel {
 					general = "Agammenmon";
 					currentChoice++;
 					talents();
-				}  else if (currentChoice == 2) {
+				} else if (currentChoice == 2) {
 					talent = "Luck";
 					currentChoice++;
 					level1();
-				}else {
+				} else if (currentChoice == 3) {
+					// output result of choice, then give counterattack
+					// opportunity
+
+					counterAttack();
+				} else if (currentChoice == 4) {
+					// output result of choice, then return to camp (if survive)
+
+					exploreC();
+				} else {
 					start();
 				}
 			}
@@ -92,11 +121,21 @@ public class InputPanel extends JPanel {
 					general = "Odysseus";
 					currentChoice++;
 					talents();
-				}  else if (currentChoice == 2) {
-					talent ="Might";
+				} else if (currentChoice == 2) {
+					talent = "Might";
 					currentChoice++;
 					level1();
-				}else {
+				} else if (currentChoice == 3) {
+					// output result of choice, then give counterattack
+					// opportunity
+
+					counterAttack();
+
+				} else if (currentChoice == 4) {
+					// output result of choice, then return to camp (if survive)
+
+					exploreC();
+				} else {
 					start();
 				}
 			}
@@ -120,6 +159,16 @@ public class InputPanel extends JPanel {
 					talent = "Wits";
 					currentChoice++;
 					level1();
+				} else if (currentChoice == 3) {
+					// output result of choice, then give counterattack
+					// opportunity
+
+					counterAttack();
+
+				} else if (currentChoice == 4) {
+					// output result of choice, then return to camp (if survive)
+
+					exploreC();
 				} else {
 					start();
 				}
@@ -157,7 +206,7 @@ public class InputPanel extends JPanel {
 		Reaction.setText("Ah, "
 				+ name
 				+ ". An excellent name. \n You came to Troy in service of one of the following generals.");
-		
+
 	}
 
 	public void talents() {
@@ -179,21 +228,37 @@ public class InputPanel extends JPanel {
 
 		Reaction.append("\nWhat are you known for?");
 	}
-	public void level1(){
-		if(talent.equals("Luck")){
+
+	public void level1() {
+		if (talent.equals("Luck")) {
 			Reaction.setText("You're not personally blessed by Tyche, but you\n roll knucklebones among the best of them.");
-		}else if(talent.equals("Agility")){
+		} else if (talent.equals("Agility")) {
 			Reaction.setText("Atalanta could outrun you any day of the week, but you\n move quick for someone of your size.");
-		}else if(talent.equals("Might")){
+		} else if (talent.equals("Might")) {
 			Reaction.setText("You're no Ajax, but you can hold your own in a fight.");
-		}else if(talent.equals("Wits")){
+		} else if (talent.equals("Wits")) {
 			Reaction.setText("Its a strech to compare yourself to Daedalus, but\n you're certainly an\n intellegent individual.");
 		}
-		
-		if(general.equals("Diomedes") || general.equals("Odysseus")){
+
+		if (general.equals("Diomedes") || general.equals("Odysseus")) {
 			Reaction.append("\n You have the day off, and choose to explore the camp during\n your freetime.");
-		}else if(general.equals("Agammemnon") || general.equals("Achilles")){
+			exploreC();
+		} else if (general.equals("Agammemnon") || general.equals("Achilles")) {
 			Reaction.append("\n It is time for you to join the battlefield, and\n take arms agains the Trojains.");
+			firstCombat();
 		}
+	}
+
+	public void exploreC() {
+
+	}
+
+	public void firstCombat() {
+
+		// Combat description and trojan attack, 4 defensive options
+	}
+
+	public void counterAttack() {
+		// 4 offensive options
 	}
 }
