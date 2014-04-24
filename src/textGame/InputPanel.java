@@ -18,6 +18,7 @@ public class InputPanel extends JPanel {
 	private int currentChoice;
 	private String name;
 	private String general;
+	private String talent;
 
 	/**
 	 * Create the panel.
@@ -40,11 +41,15 @@ public class InputPanel extends JPanel {
 					name = "Dikaiopolis";
 					currentChoice++;
 					generals();
-				}else if(currentChoice == 1){
+				} else if (currentChoice == 1) {
 					general = "Achilles";
 					currentChoice++;
 					talents();
-				}else{
+				} else if (currentChoice == 2) {
+					talent = "Agility";
+					currentChoice++;
+					level1();
+				} else {
 					start();
 				}
 			}
@@ -59,11 +64,15 @@ public class InputPanel extends JPanel {
 					name = "Huphantes";
 					currentChoice++;
 					generals();
-				}else if(currentChoice == 1){
+				} else if (currentChoice == 1) {
 					general = "Agammenmon";
 					currentChoice++;
 					talents();
-				}else{
+				}  else if (currentChoice == 2) {
+					talent = "Luck";
+					currentChoice++;
+					level1();
+				}else {
 					start();
 				}
 			}
@@ -79,11 +88,15 @@ public class InputPanel extends JPanel {
 					name = "Axaitios";
 					currentChoice++;
 					generals();
-				}else if(currentChoice == 1){
+				} else if (currentChoice == 1) {
 					general = "Odysseus";
 					currentChoice++;
 					talents();
-				}else{
+				}  else if (currentChoice == 2) {
+					talent ="Might";
+					currentChoice++;
+					level1();
+				}else {
 					start();
 				}
 			}
@@ -99,11 +112,15 @@ public class InputPanel extends JPanel {
 					name = "Eruthros";
 					currentChoice++;
 					generals();
-				}else if(currentChoice == 1){
+				} else if (currentChoice == 1) {
 					general = "Diomedes";
 					currentChoice++;
 					talents();
-				}else{
+				} else if (currentChoice == 2) {
+					talent = "Wits";
+					currentChoice++;
+					level1();
+				} else {
 					start();
 				}
 			}
@@ -114,19 +131,19 @@ public class InputPanel extends JPanel {
 
 		preGame();
 	}
-	public void preGame(){
+
+	public void preGame() {
 		Reaction.setText("Please hit any choice to start.");
-		
+
 		currentChoice = -1;
 	}
-	
+
 	public void start() {
 		choice1.setText("Dikaiopolis");
 		choice2.setText("Huphantes");
 		choice3.setText("Axaitios");
 		choice4.setText("Eruthros");
-		
-		
+
 		Reaction.setText("What is your name?");
 		currentChoice = 0;
 	}
@@ -140,15 +157,43 @@ public class InputPanel extends JPanel {
 		Reaction.setText("Ah, "
 				+ name
 				+ ". An excellent name. \n You came to Troy in service of one of the following generals.");
+		
 	}
-	public void talents(){
+
+	public void talents() {
 		choice1.setText("Agility");
 		choice2.setText("Luck");
-		choice3.setText("Stregnth");
-		choice4.setText("Intellegence");
-		
-		Reaction.setText("You came to Troy in service of "+general+".");
-		
+		choice3.setText("Might");
+		choice4.setText("Wits");
 
+		Reaction.setText("You came to Troy in service of " + general + ".");
+		if (general.equals("Achilles")) {
+			Reaction.append("\n The great Achilles is known for his invincibility in combat. You are in good hands.");
+		} else if (general.equals("Agammemnon")) {
+			Reaction.append("Ah, the great king Agamemnon, the general of all the Greeks");
+		} else if (general.equals("Diomedes")) {
+			Reaction.append("The legendary warrior king, known for felling two gods over the course of the war.");
+		} else if (general.equals("Odysseyus")) {
+			Reaction.append("Perhaps the most clever of all the greek generals, the Ithican Odysseyus.");
+		}
+
+		Reaction.append("\nWhat are you known for?");
+	}
+	public void level1(){
+		if(talent.equals("Luck")){
+			Reaction.setText("You're not personally blessed by Tyche, but you\n roll knucklebones among the best of them.");
+		}else if(talent.equals("Agility")){
+			Reaction.setText("Atalanta could outrun you any day of the week, but you\n move quick for someone of your size.");
+		}else if(talent.equals("Might")){
+			Reaction.setText("You're no Ajax, but you can hold your own in a fight.");
+		}else if(talent.equals("Wits")){
+			Reaction.setText("Its a strech to compare yourself to Daedalus, but\n you're certainly an\n intellegent individual.");
+		}
+		
+		if(general.equals("Diomedes") || general.equals("Odysseus")){
+			Reaction.append("\n You have the day off, and choose to explore the camp during\n your freetime.");
+		}else if(general.equals("Agammemnon") || general.equals("Achilles")){
+			Reaction.append("\n It is time for you to join the battlefield, and\n take arms agains the Trojains.");
+		}
 	}
 }
