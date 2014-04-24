@@ -38,8 +38,8 @@ public class InputPanel extends JPanel {
 
 		// Current Choice index:
 		/*
-		 * Choice 0 = name Choice 1 = general Choice 2 = Talent Choice 3 =
-		 * Reaction to Trojan Attack Choice 4 = Counter Attack
+		 * Choice 0 = name Choice 1 = general Choice 2 = talent Choice 3 =
+		 * reaction to Trojan Attack Choice 4 = Counter Attack
 		 * 
 		 * 
 		 * 
@@ -77,8 +77,7 @@ public class InputPanel extends JPanel {
 						counterAttack();
 
 					} else if (currentChoice == 4) {
-						// output result of choice, then return to camp (if
-						// survive)
+						// Feint
 
 						exploreC();
 					} else {
@@ -101,7 +100,7 @@ public class InputPanel extends JPanel {
 						currentChoice++;
 						generals();
 					} else if (currentChoice == 1) {
-						general = "Agammenmon";
+						general = "Agammemnon";
 						currentChoice++;
 						talents();
 					} else if (currentChoice == 2) {
@@ -119,8 +118,7 @@ public class InputPanel extends JPanel {
 						}
 						counterAttack();
 					} else if (currentChoice == 4) {
-						// output result of choice, then return to camp (if
-						// survive)
+						// Overpower
 
 						exploreC();
 					} else {
@@ -163,8 +161,7 @@ public class InputPanel extends JPanel {
 						counterAttack();
 
 					} else if (currentChoice == 4) {
-						// output result of choice, then return to camp (if
-						// survive)
+						// Nimble
 
 						exploreC();
 					} else {
@@ -232,7 +229,7 @@ public class InputPanel extends JPanel {
 
 		Reaction.setText("Ah, "
 				+ name
-				+ ". An excellent name. \nYou came to Troy in service of one of the following generals.");
+				+ ". An excellent name. \n\nYou came to Troy in service of one of the following generals.");
 
 	}
 
@@ -246,19 +243,19 @@ public class InputPanel extends JPanel {
 		if (general.equals("Achilles")) {
 			Reaction.append("\nThe great Achilles is known for his invincibility in combat. You \nare in good hands.");
 		} else if (general.equals("Agammemnon")) {
-			Reaction.append("\nAh, the great king Agamemnon, the general of all the Greeks");
+			Reaction.append("\nAh, the great king Agammemnon, the general of all the Greeks");
 		} else if (general.equals("Diomedes")) {
 			Reaction.append("\nThe legendary warrior king, known for felling two gods over the course of the war.");
 		} else if (general.equals("Odysseus")) {
 			Reaction.append("\nPerhaps the most clever of all the greek generals, \nthe Ithican Odysseyus.");
 		}
 
-		Reaction.append("\nWhat are you known for?");
+		Reaction.append("\n\nWhat are you known for?");
 	}
 
 	public void level1() {
 		if (talent.equals("Luck")) {
-			Reaction.setText("You're not personally blessed by Tyche, but you \nroll knucklebones among the best of them.");
+			Reaction.setText("You're not personally blessed by Tyche, but you roll \nknucklebones among the best of them.");
 		} else if (talent.equals("Agility")) {
 			Reaction.setText("Atalanta could outrun you any day of the week, but you move\nquick for someone of your size.\n\n");
 		} else if (talent.equals("Might")) {
@@ -268,10 +265,10 @@ public class InputPanel extends JPanel {
 		}
 
 		if (general.equals("Diomedes") || general.equals("Odysseus")) {
-			Reaction.append("\nYou have the day off, and choose to explore the camp during \nyour freetime.");
+			Reaction.append("\n\nYou have the day off, and choose to explore the camp during \nyour freetime.");
 			exploreC();
 		} else if (general.equals("Agammemnon") || general.equals("Achilles")) {
-			Reaction.append("\nIt is time for you to join the battlefield, and take arms \nagains the Trojains.");
+			Reaction.append("\nIt is time for you to join the battlefield, and take arms \nagainst the Trojains.");
 			firstCombat();
 		}
 	}
@@ -285,7 +282,7 @@ public class InputPanel extends JPanel {
 	}
 
 	public void firstCombat() {
-		Reaction.append("\nYou find yourself engaged in man on man combat with a Trojan.\nHe lashes out at you with a sword. What do you do?");
+		Reaction.append("\n\nYou find yourself engaged in man on man combat with a Trojan.\nHe lashes out at you with a sword. What do you do?");
 
 		choice1.setText("Block");
 		choice2.setText("Dodge");
@@ -298,6 +295,9 @@ public class InputPanel extends JPanel {
 		// 4 offensive options
 		Reaction.append("\nNow the ball is in your court. Time to strike.");
 
+		if (injured == true) {
+			Reaction.append("\nYour wound throbs distantly. You'll need to get that fixed \nafter the fight. But for now, you can soldier through");
+		}
 		choice1.setText("Feint");
 		choice2.setText("Overpower");
 		choice3.setText("Nimbly Slip By");
