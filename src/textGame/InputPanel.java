@@ -441,20 +441,22 @@ public class InputPanel extends JPanel {
 		choice3.setText("Sparring Area");
 		choice4.setText("Olympian Altar");
 		if (MedVis == true) {
-			choice1.setText("N/A");
 			choice1.disable();
+			choice1.setText("N/A");
+
 		}
 		if (GenVis == true) {
-			choice2.setText("N/A");
+
 			choice2.disable();
+			choice2.setText("N/A");
 		}
 		if (SparVis == true) {
-			choice3.setText("N/A");
 			choice3.disable();
+			choice3.setText("N/A");
 		}
 		if (AltarVis == true) {
-			choice4.setText("N/A");
 			choice4.disable();
+			choice4.setText("N/A");
 		}
 		// tempCode
 		if (AltarVis == true && SparVis == true && GenVis == true
