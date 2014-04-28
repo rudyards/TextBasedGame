@@ -81,15 +81,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Dikaiopolis";
-						currentChoice++;
+						currentChoice =1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Achilles";
-						currentChoice++;
+						currentChoice =2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Agility";
-						currentChoice++;
+						currentChoice=3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -141,15 +141,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Huphantes";
-						currentChoice++;
+						currentChoice=1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Agammemnon";
-						currentChoice++;
+						currentChoice=2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Luck";
-						currentChoice++;
+						currentChoice=3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -192,15 +192,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Axaitios";
-						currentChoice++;
+						currentChoice=1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Odysseus";
-						currentChoice++;
+						currentChoice=2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Might";
-						currentChoice++;
+						currentChoice=3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -249,15 +249,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Eruthros";
-						currentChoice++;
+						currentChoice=1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Diomedes";
-						currentChoice++;
+						currentChoice=2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Wits";
-						currentChoice++;
+						currentChoice=3;
 						level1();
 					} else {
 						start();
