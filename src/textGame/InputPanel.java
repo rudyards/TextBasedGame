@@ -72,23 +72,113 @@ public class InputPanel extends JPanel {
 		choice4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		choice4.setBackground(Color.LIGHT_GRAY);
 		panel.add(choice4);
-		choice4.addActionListener(new ActionListener() {
+
+
+		choice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (choice4.getText().equals("N/A")) {
+				if (choice1.getText().equals("N/A")) {
 					System.out.println("Not a valid choice. Try again.");
 				} else {
 					if (currentChoice == 0) {
-						name = "Eruthros";
+						name = "Dikaiopolis";
 						currentChoice++;
 						generals();
 					} else if (currentChoice == 1) {
-						general = "Diomedes";
+						general = "Achilles";
 						currentChoice++;
 						talents();
 					} else if (currentChoice == 2) {
-						talent = "Wits";
+						talent = "Agility";
 						currentChoice++;
 						level1();
+					} else if (currentChoice == 3) {
+						// output result of choice, then give counterattack
+						// opportunity
+						if (talent.equals("Combat")) {
+							Reaction.setText("You block his sword, and turn it to the side with relative\nease.");
+						} else if (talent.equals("Luck")) {
+							Reaction.setText("Your swords clash, and his shatters. You met blades\nalong a crack in his weapon. Luck strikes again.");
+						} else {
+							Reaction.setText("His attack is stronger than your block, and you are forced back.\nHe follows up with a quick stab that slices open your side.");
+							injured = true;
+						}
+						counterAttack();
+
+					} else if (currentChoice == 4) {
+						// Feint
+						if (talent.equals("Wits")) {
+							// success
+							
+							Reaction.setText("You cleverly outwit your foe, tricking him into blocking an \nattack that you didn't follow through on. You cut him down with ease.");
+							exploreC();
+						} else if (talent.equals("Agility")) {
+							// success
+							Reaction.setText("Your bluffing skills are subpar, but your movements impress.\nYou send an attack to his left, and as he moves to block you slash along his right.\nHe falls, horribly slain.");
+							exploreC();
+						} else {
+							// failure
+							if(injured == true){
+								Reaction.setText("Your feint doesn't fool him, and he parries with ease. \nHe cuts you down, and the world grows black.");
+								die();
+							}
+							if(injured == false){
+								Reaction.setText("Your feint leaves much to be desired and he parries. \nYou sustain heavy injuries, but barely win the fight. Better go back to camp to be repaired.");
+								injured = true;
+								exploreC();
+							}
+						}
+						
+					} else {
+						start();
+					}
+				}
+			}
+		});
+		choice2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (choice2.getText().equals("N/A")) {
+					System.out.println("Not a valid choice. Try again.");
+				} else {
+					if (currentChoice == 0) {
+						name = "Huphantes";
+						currentChoice++;
+						generals();
+					} else if (currentChoice == 1) {
+						general = "Agammemnon";
+						currentChoice++;
+						talents();
+					} else if (currentChoice == 2) {
+						talent = "Luck";
+						currentChoice++;
+						level1();
+					} else if (currentChoice == 3) {
+						// output result of choice, then give counterattack
+						// opportunity
+						if (talent.equals("Agility")) {
+							Reaction.setText("You nimbly step aside, and line yourself up to counter attack.");
+						} else {
+							Reaction.setText("You weren't quite quick enough, and his sword rips along your upper leg. Your eyes blur.");
+							injured = true;
+						}
+						counterAttack();
+					} else if (currentChoice == 4) {
+						// Overpower
+						if (talent.equals("Combat")) {
+							if (injured == true) {
+								Reaction.setText("Even while injured, you can trounce this footsoldier with ease.");
+							}
+							Reaction.setText("You strike him down, your sword removing his head from his body.");
+							exploreC();
+						} else if (talent.equals("Luck")) {
+							Reaction.setText("He can't hope to defend himself with a faulty sword. You strike him down.");
+							exploreC();
+						} else {
+							// maybe add death scene.
+							if(injured == true){
+								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack\nis an utter failure, and a dangerous one at that. As his sword slips between your ribs\nyou see the Olympians shaking their heads.");
+								die();
+							}
+						}
 					} else {
 						start();
 					}
@@ -151,118 +241,30 @@ public class InputPanel extends JPanel {
 				}
 			}
 		});
-		choice2.addActionListener(new ActionListener() {
+
+		choice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (choice2.getText().equals("N/A")) {
+				if (choice4.getText().equals("N/A")) {
 					System.out.println("Not a valid choice. Try again.");
 				} else {
 					if (currentChoice == 0) {
-						name = "Huphantes";
+						name = "Eruthros";
 						currentChoice++;
 						generals();
 					} else if (currentChoice == 1) {
-						general = "Agammemnon";
+						general = "Diomedes";
 						currentChoice++;
 						talents();
 					} else if (currentChoice == 2) {
-						talent = "Luck";
+						talent = "Wits";
 						currentChoice++;
 						level1();
-					} else if (currentChoice == 3) {
-						// output result of choice, then give counterattack
-						// opportunity
-						if (talent.equals("Agility")) {
-							Reaction.setText("You nimbly step aside, and line yourself up to counter attack.");
-						} else {
-							Reaction.setText("You weren't quite quick enough, and his sword rips along your upper leg. Your eyes blur.");
-							injured = true;
-						}
-						counterAttack();
-					} else if (currentChoice == 4) {
-						// Overpower
-						if (talent.equals("Combat")) {
-							if (injured == true) {
-								Reaction.setText("Even while injured, you can trounce this footsoldier with ease.");
-							}
-							Reaction.setText("You strike him down, your sword removing his head from his body.");
-							exploreC();
-						} else if (talent.equals("Luck")) {
-							Reaction.setText("He can't hope to defend himself with a faulty sword. You strike him down.");
-							exploreC();
-						} else {
-							// maybe add death scene.
-							if(injured == true){
-								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack\nis an utter failure, and a dangerous one at that. As his sword slips between your ribs\nyou see the Olympians shaking their heads.");
-								die();
-							}
-						}
 					} else {
 						start();
 					}
 				}
 			}
 		});
-		choice1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (choice1.getText().equals("N/A")) {
-					System.out.println("Not a valid choice. Try again.");
-				} else {
-					if (currentChoice == 0) {
-						name = "Dikaiopolis";
-						currentChoice++;
-						generals();
-					} else if (currentChoice == 1) {
-						general = "Achilles";
-						currentChoice++;
-						talents();
-					} else if (currentChoice == 2) {
-						talent = "Agility";
-						currentChoice++;
-						level1();
-					} else if (currentChoice == 3) {
-						// output result of choice, then give counterattack
-						// opportunity
-						if (talent.equals("Combat")) {
-							Reaction.setText("You block his sword, and turn it to the side with relative\nease.");
-						} else if (talent.equals("Luck")) {
-							Reaction.setText("Your swords clash, and his shatters. You met blades\nalong a crack in his weapon. Luck strikes again.");
-						} else {
-							Reaction.setText("His attack is stronger than your block, and you are forced back.\nHe follows up with a quick stab that slices open your side.");
-							injured = true;
-						}
-						counterAttack();
-
-					} else if (currentChoice == 4) {
-						// Feint
-						if (talent.equals("Wits")) {
-							// success
-							
-							Reaction.setText("You cleverly outwit your foe, tricking him into blocking an \nattack that you didn't follow through on. You cut him down with ease.");
-							exploreC();
-						} else if (talent.equals("Agility")) {
-							// success
-							Reaction.setText("Your bluffing skills are subpar, but your movements impress.\nYou send an attack to his left, and as he moves to block you slash along his right.\nHe falls, horribly slain.");
-							exploreC();
-						} else {
-							// failure
-							if(injured == true){
-								Reaction.setText("Your feint doesn't fool him, and he parries with ease. \nHe cuts you down, and the world grows black.");
-								die();
-							}
-							if(injured == false){
-								Reaction.setText("Your feint leaves much to be desired and he parries. \nYou sustain heavy injuries, but barely win the fight. Better go back to camp to be repaired.");
-								injured = true;
-								exploreC();
-							}
-						}
-						
-					} else {
-						start();
-					}
-				}
-			}
-		});
-
 		preGame();
 	}
 
