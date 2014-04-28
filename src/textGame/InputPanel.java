@@ -23,6 +23,11 @@ public class InputPanel extends JPanel {
 	private String name;
 	private String general;
 	private String talent;
+	private boolean MedVis;
+	private boolean GenVis;
+	private boolean SparVis;
+	private boolean AltarVis;
+	private boolean exVis;
 	private boolean injured;
 
 	/**
@@ -72,6 +77,7 @@ public class InputPanel extends JPanel {
 		choice4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		choice4.setBackground(Color.LIGHT_GRAY);
 		panel.add(choice4);
+		
 
 
 		choice1.addActionListener(new ActionListener() {
@@ -85,11 +91,11 @@ public class InputPanel extends JPanel {
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Achilles";
-						currentChoice =2;
+						currentChoice = 2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Agility";
-						currentChoice=3;
+						currentChoice = 3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -108,7 +114,7 @@ public class InputPanel extends JPanel {
 						// Feint
 						if (talent.equals("Wits")) {
 							// success
-							
+
 							Reaction.setText("You cleverly outwit your foe, tricking him into blocking an \nattack that you didn't follow through on. You cut him down with ease.");
 							exploreC();
 						} else if (talent.equals("Agility")) {
@@ -117,18 +123,20 @@ public class InputPanel extends JPanel {
 							exploreC();
 						} else {
 							// failure
-							if(injured == true){
+							if (injured == true) {
 								Reaction.setText("Your feint doesn't fool him, and he parries with ease. \nHe cuts you down, and the world grows black.");
 								die();
 							}
-							if(injured == false){
+							if (injured == false) {
 								Reaction.setText("Your feint leaves much to be desired and he parries. \nYou sustain heavy injuries, but barely win the fight. Better go back to camp to be repaired.");
 								injured = true;
 								exploreC();
 							}
 						}
-						
-					} else {
+
+					} else if (currentChoice == 10){
+						firstCombat();
+					}else {
 						start();
 					}
 				}
@@ -149,7 +157,7 @@ public class InputPanel extends JPanel {
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Luck";
-						currentChoice=3;
+						currentChoice = 3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -174,7 +182,7 @@ public class InputPanel extends JPanel {
 							exploreC();
 						} else {
 							// maybe add death scene.
-							if(injured == true){
+							if (injured == true) {
 								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack\nis an utter failure, and a dangerous one at that. As his sword slips between your ribs\nyou see the Olympians shaking their heads.");
 								die();
 							}
@@ -215,20 +223,20 @@ public class InputPanel extends JPanel {
 
 					} else if (currentChoice == 4) {
 						// Nimble
-						if (talent.equals("Agility")){
+						if (talent.equals("Agility")) {
 							Reaction.setText("Your speed reigns supreme once again. A blade dances past\nhis grip and opens him open from throat to sternum. He is, quite simply, dead.");
 
 							exploreC();
-						}else if(talent.equals("Luck")){
+						} else if (talent.equals("Luck")) {
 
 							Reaction.setText("He fumbles with his shield and you take that opportunity\nto strike. You rip through his armor with ease, and he falls.");
 
 							exploreC();
-						}else{
-							if(injured == true){
+						} else {
+							if (injured == true) {
 								Reaction.setText("You clang against his armor and shield, and he retailiates. \nA sword through your chest leaves you gasping for air. A pity it ended this way.");
 								die();
-							}else{
+							} else {
 
 								Reaction.setText("You're barely able to cut around his armor and gaurd,\n sustaining heavy injuries in the process. You need to see a medic.");
 								injured = true;
@@ -241,7 +249,6 @@ public class InputPanel extends JPanel {
 				}
 			}
 		});
-
 		choice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (choice4.getText().equals("N/A")) {
@@ -249,15 +256,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Eruthros";
-						currentChoice=1;
+						currentChoice++;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Diomedes";
-						currentChoice=2;
+						currentChoice++;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Wits";
-						currentChoice=3;
+						currentChoice ;
 						level1();
 					} else {
 						start();
@@ -307,13 +314,13 @@ public class InputPanel extends JPanel {
 
 		Reaction.setText("You came to Troy in service of " + general + ".");
 		if (general.equals("Achilles")) {
-			Reaction.append("\nThe great Achilles is known for his invincibility in combat. You \nare in good hands.");
+			Reaction.append("\nThe great Achilles is known for his invincibility in combat. You are in good hands.");
 		} else if (general.equals("Agammemnon")) {
 			Reaction.append("\nAh, the great king Agammemnon, the general of all the Greeks");
 		} else if (general.equals("Diomedes")) {
 			Reaction.append("\nThe legendary warrior king, known for felling two gods over the course of the war.");
 		} else if (general.equals("Odysseus")) {
-			Reaction.append("\nPerhaps the most clever of all the greek generals, \nthe Ithican Odysseyus.");
+			Reaction.append("\nPerhaps the most clever of all the greek generals, the Ithican Odysseyus.");
 		}
 
 		Reaction.append("\n\nWhat are you known for?");
@@ -321,13 +328,13 @@ public class InputPanel extends JPanel {
 
 	public void level1() {
 		if (talent.equals("Luck")) {
-			Reaction.setText("You're not personally blessed by Tyche, but you roll \nknucklebones among the best of them.");
+			Reaction.setText("You're not personally blessed by Tyche, but you roll knucklebones among the best of them.");
 		} else if (talent.equals("Agility")) {
-			Reaction.setText("Atalanta could outrun you any day of the week, but you move\nquick for someone of your size.");
+			Reaction.setText("Atalanta could outrun you any day of the week, but you move quick for someone of your size.");
 		} else if (talent.equals("Might")) {
 			Reaction.setText("You're no Ajax, but you can hold your own in a fight.");
 		} else if (talent.equals("Wits")) {
-			Reaction.setText("Its a strech to compare yourself to Daedalus, but \nyou're certainly an\nintellegent individual.");
+			Reaction.setText("Its a strech to compare yourself to Daedalus, but \nyou're certainly an intellegent individual.");
 		}
 
 		if (general.equals("Diomedes") || general.equals("Odysseus")) {
@@ -341,14 +348,47 @@ public class InputPanel extends JPanel {
 
 	public void exploreC() {
 		currentChoice = 5;
-		choice1.setText("N/A");
-		choice2.setText("N/A");
-		choice3.setText("N/A");
-		choice4.setText("N/A");
-		choice1.disable();
-		choice2.disable();
-		choice3.disable();
-		choice4.disable();
+		if (exVis == false) {
+			if (general.equals("Diomedes") || general.equals("Odysseus")) {
+				Reaction.append("\n\nIt is a lovely day, you think as you strech your legs and \nexplore.");
+			} else if (general.equals("Agammemnon")
+					|| general.equals("Achilles")) {
+				Reaction.append("You arrive at camp.");
+			}
+
+		}else{
+			Reaction.append("You return outside, and consider what to do next.");
+		}
+		choice1.setText("Medical Tent");
+		choice2.setText("Generals' Tent");
+		choice3.setText("Sparring Area");
+		choice4.setText("Olympian Altar");
+		if (MedVis == true) {
+			choice1.disable();
+		}
+		if (GenVis == true) {
+			choice2.disable();
+		}
+		if (SparVis == true) {
+			choice3.disable();
+		}
+		if (AltarVis == true) {
+
+		}
+		//tempCode
+		AltarVis = true;
+		SparVis = true;
+		GenVis = true;
+		MedVis = true;
+		if(AltarVis == true && SparVis == true && GenVis == true && MedVis == true){
+			Reaction.append("\n\nThere is nothing left to do, other than to enter the battlefield.");
+			choice1.enable();
+			choice1.setText("To Battle!");
+			choice2.setText("N/A");
+			choice3.setText("N/A");
+			choice4.setText("N/A");
+			currentChoice = 10;
+		}
 	}
 
 	public void firstCombat() {
@@ -383,7 +423,8 @@ public class InputPanel extends JPanel {
 		choice3.enable();
 		choice4.enable();
 	}
-	public void die(){
+
+	public void die() {
 		Reaction.append("\n\n\nYou have been slain. Reboot program and try again.");
 		choice1.disable();
 		choice2.disable();
