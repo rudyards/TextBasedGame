@@ -48,7 +48,7 @@ public class InputPanel extends JPanel {
 		 * 
 		 * Other = Restart, there's a bug
 		 */
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.BLACK);
 		add(panel, BorderLayout.SOUTH);
@@ -57,129 +57,153 @@ public class InputPanel extends JPanel {
 		choice1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		choice1.setBackground(Color.LIGHT_GRAY);
 		panel.add(choice1);
-		
-				choice2 = new JButton("Choice Two");
-				choice2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-				choice2.setBackground(Color.LIGHT_GRAY);
-				panel.add(choice2);
-				
-						choice3 = new JButton("Choice Three");
-						choice3.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-						choice3.setBackground(Color.LIGHT_GRAY);
-						panel.add(choice3);
-						
-								choice4 = new JButton("Choice Four");
-								choice4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
-								choice4.setBackground(Color.LIGHT_GRAY);
-								panel.add(choice4);
-								choice4.addActionListener(new ActionListener() {
-									public void actionPerformed(ActionEvent e) {
-										if (choice4.getText().equals("N/A")) {
-											System.out.println("Not a valid choice. Try again.");
-										} else {
-											if (currentChoice == 0) {
-												name = "Eruthros";
-												currentChoice++;
-												generals();
-											} else if (currentChoice == 1) {
-												general = "Diomedes";
-												currentChoice++;
-												talents();
-											} else if (currentChoice == 2) {
-												talent = "Wits";
-												currentChoice++;
-												level1();
-											} else {
-												start();
-											}
-										}
-									}
-								});
-						choice3.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								if (choice3.getText().equals("N/A")) {
-									System.out.println("Not a valid choice. Try again.");
-								} else {
-									if (currentChoice == 0) {
-										name = "Axaitios";
-										currentChoice++;
-										generals();
-									} else if (currentChoice == 1) {
-										general = "Odysseus";
-										currentChoice++;
-										talents();
-									} else if (currentChoice == 2) {
-										talent = "Might";
-										currentChoice++;
-										level1();
-									} else if (currentChoice == 3) {
-										// output result of choice, then give counterattack
-										// opportunity
-										if (talent.equals("Luck")) {
-											Reaction.setText("He had you dead to rights, but a stray arrow from a skirmish downwind embeds itself in his arm. You got lucky.");
-										} else {
-											Reaction.setText("The sword slashes your shoulder, and you roar in pain.");
-											injured = true;
-										}
-										counterAttack();
 
-									} else if (currentChoice == 4) {
-										// Nimble
+		choice2 = new JButton("Choice Two");
+		choice2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		choice2.setBackground(Color.LIGHT_GRAY);
+		panel.add(choice2);
 
-										exploreC();
-									} else {
-										start();
-									}
-								}
-							}
-						});
-				choice2.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						if (choice2.getText().equals("N/A")) {
-							System.out.println("Not a valid choice. Try again.");
+		choice3 = new JButton("Choice Three");
+		choice3.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		choice3.setBackground(Color.LIGHT_GRAY);
+		panel.add(choice3);
+
+		choice4 = new JButton("Choice Four");
+		choice4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		choice4.setBackground(Color.LIGHT_GRAY);
+		panel.add(choice4);
+		choice4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (choice4.getText().equals("N/A")) {
+					System.out.println("Not a valid choice. Try again.");
+				} else {
+					if (currentChoice == 0) {
+						name = "Eruthros";
+						currentChoice++;
+						generals();
+					} else if (currentChoice == 1) {
+						general = "Diomedes";
+						currentChoice++;
+						talents();
+					} else if (currentChoice == 2) {
+						talent = "Wits";
+						currentChoice++;
+						level1();
+					} else {
+						start();
+					}
+				}
+			}
+		});
+		choice3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (choice3.getText().equals("N/A")) {
+					System.out.println("Not a valid choice. Try again.");
+				} else {
+					if (currentChoice == 0) {
+						name = "Axaitios";
+						currentChoice++;
+						generals();
+					} else if (currentChoice == 1) {
+						general = "Odysseus";
+						currentChoice++;
+						talents();
+					} else if (currentChoice == 2) {
+						talent = "Might";
+						currentChoice++;
+						level1();
+					} else if (currentChoice == 3) {
+						// output result of choice, then give counterattack
+						// opportunity
+						if (talent.equals("Luck")) {
+							Reaction.setText("He had you dead to rights, but a stray arrow from a skirmish downwind embeds itself in his arm. You got lucky.");
 						} else {
-							if (currentChoice == 0) {
-								name = "Huphantes";
-								currentChoice++;
-								generals();
-							} else if (currentChoice == 1) {
-								general = "Agammemnon";
-								currentChoice++;
-								talents();
-							} else if (currentChoice == 2) {
-								talent = "Luck";
-								currentChoice++;
-								level1();
-							} else if (currentChoice == 3) {
-								// output result of choice, then give counterattack
-								// opportunity
-								if (talent.equals("Agility")) {
-									Reaction.setText("You nimbly step aside, and line yourself up to counter attack.");
-								} else {
-									Reaction.setText("You weren't quite quick enough, and his sword rips along your upper leg. Your eyes blur.");
-									injured = true;
-								}
-								counterAttack();
-							} else if (currentChoice == 4) {
-								// Overpower
-								if (talent.equals("Combat")) {
-									if (injured == true) {
-										Reaction.setText("Even while injured, you can trounce this footsoldier with ease.");
-									}
-									Reaction.setText("You strike him down, your sword removing his head from his body.");
-								}else if(talent.equals("Luck")){
-									Reaction.setText("He can't hope to defend himself with a faulty sword. You strike him down.");
-								}else{
-									//maybe add death scene.
-									Reaction.setText("You defeat him, but only barely. You are seriously wounded and \ndirely need medical assistance.");
-								}
+							Reaction.setText("The sword slashes your shoulder, and you roar in pain.");
+							injured = true;
+						}
+						counterAttack();
+
+					} else if (currentChoice == 4) {
+						// Nimble
+						if (talent.equals("Agility")){
+
+							Reaction.setText("");
+
+							exploreC();
+						}else if(talent.equals("Luck")){
+
+							Reaction.setText("");
+
+							exploreC();
+						}else{
+							if(injured == true){
+								Reaction.setText("");
+								die();
+							}else{
+
+								Reaction.setText("");
+
+								injured = true;
 								exploreC();
-							} else {
-								start();
 							}
 						}
+					} else {
+						start();
 					}
-				});
+				}
+			}
+		});
+		choice2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (choice2.getText().equals("N/A")) {
+					System.out.println("Not a valid choice. Try again.");
+				} else {
+					if (currentChoice == 0) {
+						name = "Huphantes";
+						currentChoice++;
+						generals();
+					} else if (currentChoice == 1) {
+						general = "Agammemnon";
+						currentChoice++;
+						talents();
+					} else if (currentChoice == 2) {
+						talent = "Luck";
+						currentChoice++;
+						level1();
+					} else if (currentChoice == 3) {
+						// output result of choice, then give counterattack
+						// opportunity
+						if (talent.equals("Agility")) {
+							Reaction.setText("You nimbly step aside, and line yourself up to counter attack.");
+						} else {
+							Reaction.setText("You weren't quite quick enough, and his sword rips along your upper leg. Your eyes blur.");
+							injured = true;
+						}
+						counterAttack();
+					} else if (currentChoice == 4) {
+						// Overpower
+						if (talent.equals("Combat")) {
+							if (injured == true) {
+								Reaction.setText("Even while injured, you can trounce this footsoldier with ease.");
+							}
+							Reaction.setText("You strike him down, your sword removing his head from his body.");
+							exploreC();
+						} else if (talent.equals("Luck")) {
+							Reaction.setText("He can't hope to defend himself with a faulty sword. You strike him down.");
+							exploreC();
+						} else {
+							// maybe add death scene.
+							if(injured == true){
+								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack\nis an utter failure, and a dangerous one at that. As his sword slips between your ribs\nyou see the Olympians shaking their heads.");
+								die();
+							}
+						}
+					} else {
+						start();
+					}
+				}
+			}
+		});
 		choice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (choice1.getText().equals("N/A")) {
@@ -212,15 +236,28 @@ public class InputPanel extends JPanel {
 
 					} else if (currentChoice == 4) {
 						// Feint
-						if (talent.equals("Wits")){
-							//success
-							Reaction.setText("");
-						}else if(talent.equals("Agility")){
-							//success
-						}else{
-							//failure
+						if (talent.equals("Wits")) {
+							// success
+							
+							Reaction.setText("You cleverly outwit your foe, tricking him into blocking an \nattack that you didn't follow through on. You cut him down with ease.");
+							exploreC();
+						} else if (talent.equals("Agility")) {
+							// success
+							Reaction.setText("Your bluffing skills are subpar, but your movements impress.\nYou send an attack to his left, and as he moves to block you slash along his right.\nHe falls, horribly slain.");
+							exploreC();
+						} else {
+							// failure
+							if(injured == true){
+								Reaction.setText("Your feint doesn't fool him, and he parries with ease. \nHe cuts you down, and the world grows black.");
+								die();
+							}
+							if(injured == false){
+								Reaction.setText("Your feint leaves much to be desired and he parries. \nYou sustain heavy injuries, but barely win the fight. Better go back to camp to be repaired.");
+								injured = true;
+								exploreC();
+							}
 						}
-						exploreC();
+						
 					} else {
 						start();
 					}
@@ -339,10 +376,18 @@ public class InputPanel extends JPanel {
 		choice4.disable();
 		choice4.setText("N/A");
 	}
-	public void activateButtons(){
+
+	public void activateButtons() {
 		choice1.enable();
 		choice2.enable();
 		choice3.enable();
 		choice4.enable();
+	}
+	public void die(){
+		Reaction.append("\n\n\nYou have been slain. Reboot program and try again.");
+		choice1.disable();
+		choice2.disable();
+		choice3.disable();
+		choice4.disable();
 	}
 }
