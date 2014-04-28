@@ -126,23 +126,21 @@ public class InputPanel extends JPanel {
 					} else if (currentChoice == 4) {
 						// Nimble
 						if (talent.equals("Agility")){
-
-							Reaction.setText("");
+							Reaction.setText("Your speed reigns supreme once again. A blade dances past\nhis grip and opens him open from throat to sternum. He is, quite simply, dead.");
 
 							exploreC();
 						}else if(talent.equals("Luck")){
 
-							Reaction.setText("");
+							Reaction.setText("He fumbles with his shield and you take that opportunity\nto strike. You rip through his armor with ease, and he falls.");
 
 							exploreC();
 						}else{
 							if(injured == true){
-								Reaction.setText("");
+								Reaction.setText("You clang against his armor and shield, and he retailiates. \nA sword through your chest leaves you gasping for air. A pity it ended this way.");
 								die();
 							}else{
 
-								Reaction.setText("");
-
+								Reaction.setText("You're barely able to cut around his armor and gaurd,\n sustaining heavy injuries in the process. You need to see a medic.");
 								injured = true;
 								exploreC();
 							}
