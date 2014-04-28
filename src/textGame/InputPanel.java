@@ -131,6 +131,7 @@ public class InputPanel extends JPanel {
 
 					} else if (currentChoice == 5) {
 						// Med tent
+						exVis = true;
 						Reaction.setText("You enter the medical tent, and look around. An old man, clad in robes with a bone necklace turns towards you.");
 						if (injured == true) {
 							Reaction.setText("'Och,' he remarks, 'That's a nasty looking wound. Let me get that fixed up for you'.");
@@ -153,7 +154,9 @@ public class InputPanel extends JPanel {
 						Reaction.append("\n\n You rise, and leave the altar.");
 						AltarVis = true;
 						exploreC();
-					} else {
+					} else if (currentChoice == 10){
+						firstCombat();
+					}else {
 						start();
 					}
 				}
@@ -208,6 +211,7 @@ public class InputPanel extends JPanel {
 							}
 						}
 					} else if (currentChoice == 5) {
+						exVis = true;
 						Reaction.setText("You poke your head into the generals' tent to see what's going on, but Achilles and Agammemon are arguing. It would be unwise to remain\nnear here. You duck back outside and head back towards camp.");
 						GenVis = true;
 						exploreC();
@@ -280,6 +284,7 @@ public class InputPanel extends JPanel {
 							}
 						}
 					} else if (currentChoice == 5) {
+						exVis = true;
 						Reaction.setText("You reach the sparring grounds. If you want, you can train a new talent here to replace your current one.");
 						choice1.setText("Train Might");
 						choice2.setText("Train Agility");
@@ -326,7 +331,9 @@ public class InputPanel extends JPanel {
 						
 						level1();
 					} else if (currentChoice == 5) {
+						exVis = true;
 						Reaction.setText("You approach the altar cautiously. Who do you pray to?");
+						exVis = true;
 						prayer();
 					} else if (currentChoice == 9) {
 						// who do you pray to?
@@ -337,6 +344,7 @@ public class InputPanel extends JPanel {
 						Reaction.append("\n\n You rise, and leave the altar.");
 
 						AltarVis = true;
+
 						exploreC();
 
 					} else {
