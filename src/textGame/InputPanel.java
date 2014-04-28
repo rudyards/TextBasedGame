@@ -133,25 +133,30 @@ public class InputPanel extends JPanel {
 						}
 
 					} else if (currentChoice == 5) {
-						//Med tent
+						// Med tent
 						Reaction.setText("You enter the medical tent, and look around. An old man, clad in robes with a bone necklace turns towards you.");
-						if(injured == true){
+						if (injured == true) {
 							Reaction.setText("'Och,' he remarks, 'That's a nasty looking wound. Let me get that fixed up for you'.");
 							injured = false;
 							Reaction.append("\nYou leave the tent feeling much better");
-						}else{
+						} else {
 							Reaction.setText("'What are you doing in here! I have patients to attend to!' He yells.");
 							Reaction.append("\nYou leave hastily.");
 						}
 						MedVis = true;
 						exploreC();
-					}  else if (currentChoice == 9){
-						//who do you pray to?
+					} else if (currentChoice == 6) {
+						Reaction.setText("You practice your physical strength and feel yourself becoming mightier.");
+						talent = "Might";
+						SparVis = true;
+						Reaction.append("\nYou leave the sparring grounds.");
+					} else if (currentChoice == 9) {
+						// who do you pray to?
 						Reaction.setText("You go down on your knees and lower your head. 'Oh Aprhodite, goddess of love' you\n begin 'Please keep my wife and children safe. I do not blame you for this war, all I ask is \nyou protect my family.");
 						Reaction.append("\n\n You rise, and leave the altar.");
 						AltarVis = true;
 						exploreC();
-					}else {
+					} else {
 						start();
 					}
 				}
@@ -204,15 +209,20 @@ public class InputPanel extends JPanel {
 						}
 					} else if (currentChoice == 5) {
 
-					}  else if (currentChoice == 9){
-						//who do you pray to?
+					} else if (currentChoice == 6) {
+						Reaction.setText("You practice your speed and feel your Agility growing.");
+						talent = "Agility";
+						SparVis = true;
+						Reaction.append("\nYou leave the sparring grounds.");
+					} else if (currentChoice == 9) {
+						// who do you pray to?
 						Reaction.setText("'Oh lord of the Thunder, he who brings down lightning from the skies, I have come to pray.\nMy Lord, you are mighty, and I am but a man. Please, aid me in this moment of need.'. Silence. Disapointing.");
 						Reaction.append("\n\n You rise, and leave the altar.");
 
 						AltarVis = true;
 						exploreC();
 
-					}else {
+					} else {
 						start();
 					}
 				}
@@ -269,11 +279,21 @@ public class InputPanel extends JPanel {
 							}
 						}
 					} else if (currentChoice == 5) {
+						Reaction.setText("You reach the sparring grounds. If you want, you can train a new talent here to replace your current one.");
+						choice1.setText("Train Might");
+						choice2.setText("Train Agility");
+						choice3.setText("Don't Train");
+						choice4.setText("N/A");
 
-					}  else if (currentChoice == 9){
-						//who do you pray to?
+						currentChoice = 6;
+					} else if (currentChoice == 6) {
+						Reaction.setText("You chose not to train and your talent remains the same. You return back to camp.");
+						SparVis = true;
+						exploreC();
+					} else if (currentChoice == 9) {
+						// who do you pray to?
 						Reaction.setText("'Oh, mighty goddess', you start, falling limply to your knees. 'Oh great Hera\nI am lost. I'm unable to win battles that should be easy. Please, grant me\nmight beyond measure.");
-						if(talent.equals("Might")==false){
+						if (talent.equals("Might") == false) {
 							Reaction.append("\nYou feel your strength growing. But at what cost?");
 						}
 						Reaction.append("\n\n You rise, and leave the altar.");
@@ -281,7 +301,7 @@ public class InputPanel extends JPanel {
 						AltarVis = true;
 						exploreC();
 
-					}else {
+					} else {
 						start();
 					}
 				}
@@ -308,10 +328,10 @@ public class InputPanel extends JPanel {
 					} else if (currentChoice == 5) {
 						Reaction.setText("You approach the altar cautiously. Who do you pray to?");
 						prayer();
-					} else if (currentChoice == 9){
-						//who do you pray to?
+					} else if (currentChoice == 9) {
+						// who do you pray to?
 						Reaction.setText("'Oh, great Athena', you plead, kneeling down in front of the altar, 'Help me in this hour\n of need. I need stregth to fight in this grusome war. May I have your blessing?'");
-						if(talent.equals("Wits")==false){
+						if (talent.equals("Wits") == false) {
 							Reaction.append("\nYou feel your mind swelling, although it is likely at the cost of something.");
 						}
 						Reaction.append("\n\n You rise, and leave the altar.");
@@ -408,13 +428,12 @@ public class InputPanel extends JPanel {
 					|| general.equals("Achilles")) {
 				Reaction.append("\n\nYou arrive at camp.");
 			}
-			
 
 		} else {
 			Reaction.append("\n\nYou return outside, and consider what to do next.");
 		}
-		
-		if(injured == true){
+
+		if (injured == true) {
 			Reaction.append("\nYour wound throbs. You should see a medic.");
 		}
 		choice1.setText("Medical Tent");
@@ -449,9 +468,10 @@ public class InputPanel extends JPanel {
 			currentChoice = 10;
 		}
 	}
-	public void prayer(){
+
+	public void prayer() {
 		activateButtons();
-		currentChoice=9;
+		currentChoice = 9;
 		choice1.setText("Aphrodite");
 		choice2.setText("Zeus");
 		choice3.setText("Hera");
