@@ -79,7 +79,6 @@ public class InputPanel extends JPanel {
 		panel.add(choice4);
 		
 
-
 		choice1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (choice1.getText().equals("N/A")) {
@@ -91,11 +90,11 @@ public class InputPanel extends JPanel {
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Achilles";
-						currentChoice = 2;
+						currentChoice =2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Agility";
-						currentChoice = 3;
+						currentChoice=3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -114,7 +113,7 @@ public class InputPanel extends JPanel {
 						// Feint
 						if (talent.equals("Wits")) {
 							// success
-
+							
 							Reaction.setText("You cleverly outwit your foe, tricking him into blocking an \nattack that you didn't follow through on. You cut him down with ease.");
 							exploreC();
 						} else if (talent.equals("Agility")) {
@@ -123,20 +122,18 @@ public class InputPanel extends JPanel {
 							exploreC();
 						} else {
 							// failure
-							if (injured == true) {
+							if(injured == true){
 								Reaction.setText("Your feint doesn't fool him, and he parries with ease. \nHe cuts you down, and the world grows black.");
 								die();
 							}
-							if (injured == false) {
+							if(injured == false){
 								Reaction.setText("Your feint leaves much to be desired and he parries. \nYou sustain heavy injuries, but barely win the fight. Better go back to camp to be repaired.");
 								injured = true;
 								exploreC();
 							}
 						}
-
-					} else if (currentChoice == 10){
-						firstCombat();
-					}else {
+						
+					} else {
 						start();
 					}
 				}
@@ -157,7 +154,7 @@ public class InputPanel extends JPanel {
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Luck";
-						currentChoice = 3;
+						currentChoice=3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -182,7 +179,7 @@ public class InputPanel extends JPanel {
 							exploreC();
 						} else {
 							// maybe add death scene.
-							if (injured == true) {
+							if(injured == true){
 								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack\nis an utter failure, and a dangerous one at that. As his sword slips between your ribs\nyou see the Olympians shaking their heads.");
 								die();
 							}
@@ -223,20 +220,20 @@ public class InputPanel extends JPanel {
 
 					} else if (currentChoice == 4) {
 						// Nimble
-						if (talent.equals("Agility")) {
+						if (talent.equals("Agility")){
 							Reaction.setText("Your speed reigns supreme once again. A blade dances past\nhis grip and opens him open from throat to sternum. He is, quite simply, dead.");
 
 							exploreC();
-						} else if (talent.equals("Luck")) {
+						}else if(talent.equals("Luck")){
 
 							Reaction.setText("He fumbles with his shield and you take that opportunity\nto strike. You rip through his armor with ease, and he falls.");
 
 							exploreC();
-						} else {
-							if (injured == true) {
+						}else{
+							if(injured == true){
 								Reaction.setText("You clang against his armor and shield, and he retailiates. \nA sword through your chest leaves you gasping for air. A pity it ended this way.");
 								die();
-							} else {
+							}else{
 
 								Reaction.setText("You're barely able to cut around his armor and gaurd,\n sustaining heavy injuries in the process. You need to see a medic.");
 								injured = true;
@@ -249,6 +246,7 @@ public class InputPanel extends JPanel {
 				}
 			}
 		});
+
 		choice4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (choice4.getText().equals("N/A")) {
@@ -256,15 +254,15 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Eruthros";
-						currentChoice++;
+						currentChoice=1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Diomedes";
-						currentChoice++;
+						currentChoice=2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Wits";
-						currentChoice ;
+						currentChoice=3;
 						level1();
 					} else {
 						start();
