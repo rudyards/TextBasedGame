@@ -85,21 +85,18 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Dikaiopolis";
-						currentChoice = 1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Achilles";
-						currentChoice = 2;
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Agility";
-						currentChoice = 3;
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
 						// opportunity
-						if (talent.equals("Combat")) {
-							Reaction.setText("You block his sword, and turn it to the side with relative\nease.");
+						if (talent.equals("Might")) {
+							Reaction.setText("You block his sword, and turn it to the side with relative ease. You call it a day and return to camp.");
 						} else if (talent.equals("Luck")) {
 							Reaction.setText("Your swords clash, and his shatters. You met blades\nalong a crack in his weapon. Luck strikes again.");
 						} else {
@@ -169,15 +166,14 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Huphantes";
-						currentChoice = 1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Agammemnon";
-						currentChoice = 2;
+						
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Luck";
-						currentChoice = 3;
+						
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -191,7 +187,7 @@ public class InputPanel extends JPanel {
 						counterAttack();
 					} else if (currentChoice == 4) {
 						// Overpower
-						if (talent.equals("Combat")) {
+						if (talent.equals("Might")) {
 							if (injured == true) {
 								Reaction.setText("Even while injured, you can trounce this footsoldier with ease.");
 							}
@@ -203,12 +199,18 @@ public class InputPanel extends JPanel {
 						} else {
 							// maybe add death scene.
 							if (injured == true) {
-								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attac is an utter failure, and a dangerous one at\n that. As his sword slips between your ribs you see the Olympians shaking their heads.");
+								Reaction.setText("Your injuries and lack of combat expertise means that your frontal attack is an utter failure, and a dangerous one at\n that. As his sword slips between your ribs you see the Olympians shaking their heads.");
 								die();
+							} else {
+								Reaction.setText("You aren't stronger than him, and so he goes down with a fight. You have become wounded and need a medic.");
+								injured = true;
+								exploreC();
 							}
 						}
 					} else if (currentChoice == 5) {
-
+						Reaction.setText("You poke your head into the generals' tent to see what's going on, but Achilles and Agammemon are arguing. It would be unwise to remain\nnear here. You duck back outside and head back towards camp.");
+						GenVis = true;
+						exploreC();
 					} else if (currentChoice == 6) {
 						Reaction.setText("You practice your speed and feel your Agility growing.");
 						talent = "Agility";
@@ -235,15 +237,14 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Axaitios";
-						currentChoice = 1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Odysseus";
-						currentChoice = 2;
+						
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Might";
-						currentChoice = 3;
+						
 						level1();
 					} else if (currentChoice == 3) {
 						// output result of choice, then give counterattack
@@ -315,15 +316,14 @@ public class InputPanel extends JPanel {
 				} else {
 					if (currentChoice == 0) {
 						name = "Eruthros";
-						currentChoice = 1;
 						generals();
 					} else if (currentChoice == 1) {
 						general = "Diomedes";
-						currentChoice = 2;
+						
 						talents();
 					} else if (currentChoice == 2) {
 						talent = "Wits";
-						currentChoice = 3;
+						
 						level1();
 					} else if (currentChoice == 5) {
 						Reaction.setText("You approach the altar cautiously. Who do you pray to?");
@@ -375,7 +375,7 @@ public class InputPanel extends JPanel {
 		Reaction.setText("Ah, "
 				+ name
 				+ ". An excellent name. \n\nYou came to Troy in service of one of the following generals.");
-
+		currentChoice = 1;
 	}
 
 	public void talents() {
@@ -397,6 +397,7 @@ public class InputPanel extends JPanel {
 		}
 
 		Reaction.append("\n\nWhat are you known for?");
+		currentChoice = 2;
 	}
 
 	public void level1() {
@@ -488,7 +489,9 @@ public class InputPanel extends JPanel {
 		choice3.setText("Scream in Fear");
 		choice4.setText("N/A");
 		choice4.disable();
+		currentChoice = 3;
 		// Combat description and trojan attack, 4 defensive options
+		
 	}
 
 	public void counterAttack() {
@@ -504,6 +507,7 @@ public class InputPanel extends JPanel {
 		choice3.setText("Nimbly Slip By");
 		choice4.disable();
 		choice4.setText("N/A");
+		currentChoice = 4;
 	}
 
 	public void activateButtons() {
