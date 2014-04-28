@@ -42,13 +42,14 @@ public class CreditsFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		JLabel lblCredits = new JLabel("Credits:");
 		lblCredits.setHorizontalAlignment(SwingConstants.CENTER);
-		lblCredits.setForeground(Color.RED);
+		lblCredits.setForeground(Color.WHITE);
 		contentPane.add(lblCredits, BorderLayout.NORTH);
 		
 		JTextArea textArea = new JTextArea();

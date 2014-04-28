@@ -66,6 +66,7 @@ public class SplashScreen extends JFrame {
 			}
 		});
 		contentPane.add(Play);
+
 		
 		JButton About = new JButton("About/Help");
 		About.addActionListener(new ActionListener() {

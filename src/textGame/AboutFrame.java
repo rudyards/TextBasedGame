@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
+import java.awt.Color;
 
 public class AboutFrame extends JFrame {
 
@@ -38,6 +39,7 @@ public class AboutFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
@@ -45,7 +47,7 @@ public class AboutFrame extends JFrame {
 		JTextArea txtrLolLikeId = new JTextArea();
 		txtrLolLikeId.setLineWrap(true);
 		txtrLolLikeId.setBackground(UIManager.getColor("Panel.background"));
-		txtrLolLikeId.setText("\n\nHelen's Quest is a chose your own adventure style game, about the \nTrojan war. You play as a soldier in the war, under a general of your \nchoice.");
+		txtrLolLikeId.setText("\n\"I sing of an unsung hero, who fought his way through the Trojan\nwar. I sing of a great hero: You.\"\n\nHelen's Quest is an adventure game that takes place during the\nTrojan War. The player is given various situations and must pick one of up to four possible choices on how to approach the situation at\nhand. There are several homages to famous ancient myths.");
 		contentPane.add(txtrLolLikeId, BorderLayout.CENTER);
 	}
 

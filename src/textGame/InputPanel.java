@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Color;
+import java.awt.Font;
 
 public class InputPanel extends JPanel {
 	private String currentAction;
@@ -30,6 +32,7 @@ public class InputPanel extends JPanel {
 		setLayout(new BorderLayout(0, 0));
 
 		Reaction = new JTextArea();
+		Reaction.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		Reaction.setEditable(false);
 		Reaction.setLineWrap(true);
 		add(Reaction);
@@ -47,18 +50,27 @@ public class InputPanel extends JPanel {
 		 */
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
 		add(panel, BorderLayout.SOUTH);
 		panel.setLayout(new GridLayout(0, 4, 0, 0));
 		choice1 = new JButton("Choice One");
+		choice1.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		choice1.setBackground(Color.LIGHT_GRAY);
 		panel.add(choice1);
 		
 				choice2 = new JButton("Choice Two");
+				choice2.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+				choice2.setBackground(Color.LIGHT_GRAY);
 				panel.add(choice2);
 				
 						choice3 = new JButton("Choice Three");
+						choice3.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+						choice3.setBackground(Color.LIGHT_GRAY);
 						panel.add(choice3);
 						
 								choice4 = new JButton("Choice Four");
+								choice4.setFont(new Font("Times New Roman", Font.PLAIN, 14));
+								choice4.setBackground(Color.LIGHT_GRAY);
 								panel.add(choice4);
 								choice4.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent e) {
